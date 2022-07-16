@@ -1,12 +1,14 @@
 #!/bin/bash/
-#if any line of cmd code have error then exit the script
-set -e 
+
 #I need to validate wether user in root or not then only run the script as root user.
 user_id=$(id -u) #inside root the "id -u" o/p is "0"
 if [$User_id -ne 0] ; then
     echo "\e[32;43m you need to run as ROOT Admin \e[0m"
     exit 1
 fi
+
+#if any line of cmd code have error then exit the script
+set -e 
 
 echo "This is my frontend script"
 yum install nginx -y
