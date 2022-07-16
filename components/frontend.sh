@@ -1,6 +1,7 @@
 #!/bin/bash/
 
-set -e
+
+#set -e
 echo "This is my frontend script"
 yum install nginx -y
 systemctl enable nginx
