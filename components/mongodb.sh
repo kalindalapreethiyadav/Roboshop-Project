@@ -7,7 +7,7 @@ LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=mongod
 PROJECTNAME=roboshop
 REPOS="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
-REPOS_LINK="https://github.com/stans-robot-project/mongodb/archive/main.zip"
+SCHEMA_REPOS="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
@@ -35,7 +35,7 @@ stat
 
 echo "****************************************"
 echo -n "download the $COMPONENT schema content"
-curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
+curl -s -L -o /tmp/$COMPONENT.zip $SCHEMA_REPOS &>> $LOGFILE
 stat
 echo "---------------------------------"
 
