@@ -49,7 +49,7 @@ echo -n "Installing $COMPONENT :"
 npm install &>> $LOGFILE
 stat
 
-sudo su - $PROJECTNAME
+sudo su - $PROJECTNAME &>> $LOGFILE
 cd /home/$PROJECTNAME/$COMPONENT
-sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service 
 stat
