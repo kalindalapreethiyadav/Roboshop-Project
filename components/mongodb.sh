@@ -39,12 +39,13 @@ curl -s -L -o /tmp/$COMPONENT.zip $SCHEMA_REPOS &>> $LOGFILE
 stat
 echo "---------------------------------"
 
+<<con
 echo -n "extracting $APPNAME downloaded files:"
 cd /tmp
 unzip $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 stat
-<<con
+
 echo -n "Injecting data to $APPNAME"
 mongo < catalogue.js &>> $LOGFILE
 mongo < users.js &>> $LOGFILE
