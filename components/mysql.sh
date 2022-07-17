@@ -12,9 +12,9 @@ source components/common.sh
 
 echo "***************************************"
 echo -n "Configuring $COMPONENT Repository"
-curl -s -L -o /etc/yum.repos.d/mysql.repo $APP_REPOS_URL
+curl -s -L -o /etc/yum.repos.d/mysql.repo $APP_REPOS_URL &>> $LOGFILE
 stat
 
 echo -n "Installing $COMPONENT :"
-yum install $COMPONENT-community-server -y
+yum install $COMPONENT-community-server -y &>> $LOGFILE
 stat
