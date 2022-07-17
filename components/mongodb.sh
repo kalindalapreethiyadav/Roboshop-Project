@@ -11,11 +11,11 @@ SCHEMA_REPOS="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
-echo -n "Downloading $APPNAME Repsoitory"
+echo -n "Downloading $COMPONENT Repsoitory"
 curl -s -o /etc/yum.repos.d/mongodb.repo $MONGODB_REPOS_URL &>> $LOGFILE
 
 echo "***************************************"
-echo -n "Installing $APPNAME"
+echo -n "Installing $COMPONENT"
 yum install mongodb-org -y &>> $LOGFILE
 stat
 
@@ -25,7 +25,7 @@ systemctl start $APPNAME &>> $LOGFILE
 stat
 
 #Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
-echo -n "updating listening address conf file"
+echo -n "updating listening address in $APPNAME conf file"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat
 
@@ -40,7 +40,7 @@ stat
 echo "---------------------------------"
 
 cd /tmp
-echo -n "extracting $APPNAME downloaded files:"
+echo -n "Now extracting $APPNAME schema files:"
 unzip -o $COMPONENT.zip &>> $LOGFILE
 stat
 
