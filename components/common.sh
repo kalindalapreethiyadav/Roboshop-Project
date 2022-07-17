@@ -52,7 +52,7 @@ Starting_Service
 
 Create_User()
 {
-echo -n "Adding user"
+echo -n "creating the Roboshop user:"
 id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
 stat
 }
@@ -70,6 +70,10 @@ stat
 echo -n "Extract $COMPONENT:"
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
+#Need to change the permission for files and directories of component from "root" user to "roboshop" user
+# this can be handle by "chown -r user:group file" -r used for permision 
+#simply changing the files user and groups to "roboshop" user
+#To assign a new owner of a file component and change its group at the same time, execute the chown command in this format:
 mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
 cd $COMPONENT
 stat
