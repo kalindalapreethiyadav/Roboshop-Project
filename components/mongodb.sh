@@ -46,7 +46,7 @@ cd $COMPONENT-main
 stat
 
 echo -n "Injecting data to $APPNAME"
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js &>> $LOGFILE
+mongo < users.js &>> $LOGFILE
 stat
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
