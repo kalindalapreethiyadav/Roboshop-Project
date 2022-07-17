@@ -18,3 +18,7 @@ mongodb:
 user:
 	sh components/user.sh
 
+cart:
+	sh components/cart.sh
+
+
