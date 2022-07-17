@@ -41,7 +41,7 @@ echo "---------------------------------"
 
 echo -n "extracting $APPNAME downloaded files:"
 cd /tmp
-unzip $COMPONENT.zip
+unzip $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 stat
 
