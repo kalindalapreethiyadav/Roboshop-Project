@@ -37,7 +37,7 @@ Nodejs()
     #calling Download and extract function
     Download_and_Extract
 
-    cd /home/$PROJECTNAME/$COMPONENT
+    cd /home/$PROJECTUSER/$COMPONENT
     echo -n "Installing $COMPONENT :"
     npm install &>> $LOGFILE
     stat
@@ -53,7 +53,7 @@ Nodejs()
 Create_User()
 {
     echo -n "creating the Roboshop user:"
-    id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
+    id $PROJECTUSER &>>LOGFILE || useradd $PROJECTUSER
     stat
 }
 
@@ -64,7 +64,7 @@ Download_and_Extract()
     stat
 
     echo -n "cleaning up:"
-    cd /home/$PROJECTNAME/ && rm -rf $COMPONENT &>> $LOGFILE
+    cd /home/$PROJECTUSER/ && rm -rf $COMPONENT &>> $LOGFILE
     stat 
 
     echo -n "Extract $COMPONENT:"
@@ -74,7 +74,7 @@ Download_and_Extract()
 # this can be handle by "chown -r user:group file" -r used for permision 
 #simply changing the files user and groups to "roboshop" user
 #To assign a new owner of a file component and change its group at the same time, execute the chown command in this format:
-    mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
+    mv $COMPONENT-main $COMPONENT && chown -R $PROJECTUSER:$PROJECTUSER $COMPONENT
     cd $COMPONENT
     stat
 }
@@ -82,8 +82,8 @@ Download_and_Extract()
 Config_user()
 {
     echo -n "Configuring DB Domain NameSpace:"
-    #sudo su - $PROJECTNAME &>> $LOGFILE
-    #cd /home/$PROJECTNAME/$COMPONENT
+    #sudo su - $PROJECTUSER &>> $LOGFILE
+    #cd /home/$PROJECTUSER/$COMPONENT
     sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
     mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat
@@ -93,8 +93,8 @@ Starting_Service()
 {
     echo -n "Enable and start $COMPONENT $APPNAME Service"
     systemctl daemon-reload
-    systemctl start catalogue &>> $LOGFILE
-    systemctl enable catalogue &>> $LOGFILE
-    systemctl status catalogue -l &>> $LOGFILE
+    systemctl start $COMPONENT &>> $LOGFILE
+    systemctl enable $COMPONENT &>> $LOGFILE
+    systemctl status $COMPONENT -l &>> $LOGFILE
     stat
 }
