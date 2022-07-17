@@ -30,7 +30,7 @@ option for user checking
 other
 
 echo -n "Downloading $COMPONENT in required path:"
-$ curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
+curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
 stat
 $ cd /home/roboshop
 $ unzip /tmp/$COMPONENT.zip
