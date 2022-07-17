@@ -36,13 +36,13 @@ stat
 cd /home/roboshop
 echo -n "cleaning up:"
 cd /home/roboshop
-unzip /tmp/catalogue.zip
-mv catalogue-main catalogue
-cd /home/roboshop/catalogue
+unzip /tmp/$COMPONENT.zip &>> $LOGFILE
+mv $COMPONENT-main catalogue
+cd /home/$PROJECTNAME/$COMPONENT
 stat
 
 echo -n "installing $COMPONENT :"
-$ npm install
+#$ npm install
 stat
 
 <<go
