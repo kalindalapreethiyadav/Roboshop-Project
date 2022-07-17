@@ -6,7 +6,7 @@ COMPONENT=mongodb
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=mongod
 PROJECTNAME=roboshop
-$MONGODB_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
+MONGODB_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
 SCHEMA_REPOS="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
