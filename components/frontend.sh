@@ -10,7 +10,7 @@ REPOS_Link="https://github.com/stans-robot-project/frontend/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
-echo  "**************************************"
+echo "***************************************"
 echo -n "Installing $APPNAME"
 yum install $APPNAME -y &>> $LOGFILE
 stat
