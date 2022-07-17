@@ -17,27 +17,32 @@ stat
 
 echo "***************************************"
 
-echo -n "enabling $COMPONENT nginx"
+echo -n "enabling & starting $COMPONENT nginx"
 systemctl enable $APPNAME &>> $LOGFILE
-stat
-
-echo "***************************************"
-
-echo -n "Starting $COMPONENT nginx"
 systemctl start $APPNAME &>> $LOGFILE
 stat
 
 
 echo "***************************************"
-echo -n "download the HTDOCS content and deploy it under the $APPNAME path"
+echo "download the HTDOCS content and deploy it under the $APPNAME path"
+
+echo -n "download the HTDOCS content:"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
 echo "**************************************"
-echo -n "Deploy in $APPNAME Default Location"
+echo "Deploy started in $APPNAME Default Location"
+
+echo -n "cleaning up old files:"
 cd /usr/share/$APPNAME/html
 rm -rf *
+stat
+
+echo -n "extracting downloaded files:"
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
+stat
+
+echo -n "updtaing proy file:"
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
