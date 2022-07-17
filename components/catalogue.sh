@@ -14,3 +14,4 @@ echo "***************************************"
 
 Nodejs
 
+echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
