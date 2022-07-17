@@ -84,7 +84,7 @@ Config_user()
     echo -n "Configuring DB Domain NameSpace:"
     #sudo su - $PROJECTUSER &>> $LOGFILE
     #cd /home/$PROJECTUSER/$COMPONENT
-    sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
+    sed -i -e 's/MONGO_ENDPOINT/mongodb.robotshop.internal/' -e 's/REDIS_ENDPOINT/redis-cache.robotshop.internal/' ./systemd.service
     mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat
 }
