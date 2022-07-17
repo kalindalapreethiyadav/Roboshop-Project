@@ -44,6 +44,10 @@ stat
 
 #calling config user function
 Config_user
+
+# Enabling and Starting the services function
+Starting_Service
+
 }
 
 Create_User()
