@@ -45,5 +45,5 @@ cd /home/$PROJECTNAME/$COMPONENT
 stat
 
 echo -n "Installing $COMPONENT :"
-npm install
+npm install &>> $LOGFILE
 stat
