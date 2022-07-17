@@ -4,6 +4,7 @@ set -e
 COMPONENT=frontend
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
+REPOS_Link="https://github.com/stans-robot-project/frontend/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
@@ -14,11 +15,23 @@ stat
 
 echo "***************************************"
 
+echo "enabling $COMPONENT nginx"
 systemctl enable nginx
+stat
+
+echo "***************************************"
+
+echo "Starting $COMPONENT nginx"
 systemctl start nginx
+stat
 
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
+echo "***************************************"
+curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link
+stat
+
+echo "**************************************"
+echo "Cleaning up"
 cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip
