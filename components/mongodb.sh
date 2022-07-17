@@ -44,7 +44,7 @@ unzip -o $COMPONENT.zip &>> $LOGFILE
 stat
 
 cd $COMPONENT-main
-echo -n "Injecting data to $APPNAME"
+echo -n "Injecting schema data to $APPNAME"
 mongo < catalogue.js &>> $LOGFILE
 mongo < users.js &>> $LOGFILE
 stat
