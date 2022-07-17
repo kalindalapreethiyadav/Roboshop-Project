@@ -4,9 +4,10 @@
 #script should run as root only.
 #user id of root is '0' for any system id -u is '0' for any system
 #uid=0(root) gid=0(root) groups=0(root)
-user_id=$(id -u) #inside root the "id -u" o/p is "0"
-if [$(user_id) -ne 0] ; then
-    echo "\e[32;43m Hey! Soory, You need to run as ROOT Access permission \e[0m"
+USER_ID=$(id -u) 
+#inside root the "id -u" o/p is "0"
+if[ $USER_ID -ne 0 ] ; then
+    echo -e "\e[32;43m Hey! Soory, You need to run as ROOT Access permission \e[0m"
     exit 1
 fi
 
