@@ -28,7 +28,7 @@ Nodejs()
     stat
 
     echo -n " Installing $APPNAME:"
-    yum install $APPNAME -y >> $LOGFILE
+    yum install $APPNAME -y &>> $LOGFILE
     stat
 
     #calling cretae user function 
