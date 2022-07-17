@@ -15,23 +15,17 @@ echo -n "Installing $APPNAME"
 yum install $APPNAME -y &>> $LOGFILE
 stat
 
-echo "***************************************"
-
-echo -n "enabling & strating $COMPONENT nginx Service"
+echo -n "Enable & start" $COMPONENT nginx Service"
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
 
-
-echo "****************************************************"
-echo "download the HTDOCS content and deploy it under the $APPNAME path"
-echo "---------------------------------"
-echo -n "download the HTDOCS content:"
+echo "****************************************"
+echo -n "download the $COMPONENT content"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
-
+echo "---------------------------------"
 echo "Deploy in $APPNAME Default Location"
-
 echo -n "clean up old files:"
 cd /usr/share/$APPNAME/html
 rm -rf *
