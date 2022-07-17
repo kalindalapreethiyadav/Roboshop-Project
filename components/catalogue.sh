@@ -57,7 +57,8 @@ mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.servic
 stat
 
 echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl daemon-reload &>> $LOGFILE
-systemctl enable $APPNAME &>> $LOGFILE
-systemctl start $APPNAME &>> $LOGFILE
+systemctl daemon-reload
+systemctl start catalogue &>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
+systemctl status catalogue -l &>> $LOGFILE
 stat
