@@ -12,7 +12,7 @@ SCHEMA_REPOS="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 source components/common.sh
 
 echo -n "Downloading $APPNAME Repsoitory"
-curl -s -o /etc/yum.repos.d/mongodb.repo $REPOS
+curl -s -o /etc/yum.repos.d/mongodb.repo $REPOS &>> $LOGFILE
 
 echo "***************************************"
 echo -n "Installing $APPNAME"
