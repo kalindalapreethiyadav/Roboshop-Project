@@ -1,13 +1,19 @@
 #!/bin/bash/
-
 #if any line of cmd code have error then exit the script
 set -e 
 
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
-echo "This is my frontend script"
-yum install nginx -y
+#All output need to be redirected to log file 
+COMPONENT=frontend
+LOGFILE=$/tmp/$COMPONENT.log
+
+echo -n "Installing NGINX"
+yum install nginx -y >>$LOGFILE
+stat
+
+
 systemctl enable nginx
 systemctl start nginx
 
