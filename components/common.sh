@@ -32,6 +32,11 @@ stat
 Create_User
 #calling Download and extract function
 Download_and_Extract
+
+cd /home/$PROJECTNAME/$COMPONENT
+echo -n "Installing $COMPONENT :"
+npm install &>> $LOGFILE
+stat
 }
 
 Create_User()
@@ -39,6 +44,8 @@ Create_User()
 echo -n "Adding user"
 id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
 stat
+#calling config user function
+Config_user
 }
 
 Download_and_Extract()
@@ -57,4 +64,15 @@ unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
 cd $COMPONENT
 stat
+}
+
+Config_user()
+{
+    echo -n "Configuring DB Domain NameSpace:"
+#sudo su - $PROJECTNAME &>> $LOGFILE
+#cd /home/$PROJECTNAME/$COMPONENT
+sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+stat
+
 }
