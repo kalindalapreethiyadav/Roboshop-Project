@@ -37,6 +37,6 @@ cd /home/roboshop
 echo -n "cleaning up:"
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
-mv $COMPONENT-main catalogue
+cp $COMPONENT-main catalogue
 cd /home/$PROJECTNAME/$COMPONENT
 stat
