@@ -15,23 +15,23 @@ stat
 
 echo "***************************************"
 
-echo "enabling $COMPONENT nginx"
-systemctl enable nginx
+echo -n "enabling $COMPONENT nginx"
+systemctl enable nginx &>> $LOGFILE
 stat
 
 echo "***************************************"
 
-echo "Starting $COMPONENT nginx"
-systemctl start nginx
+echo -n "Starting $COMPONENT nginx"
+systemctl start nginx &>> $LOGFILE
 stat
 
 
 echo "***************************************"
-curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link
+curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
 echo "**************************************"
-echo "Cleaning up"
+echo -n "Cleaning up"
 cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip
