@@ -80,3 +80,13 @@ sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 stat
 }
+
+Starting_Service()
+{
+echo -n "Enable and start $COMPONENT $APPNAME Service"
+systemctl daemon-reload
+systemctl start catalogue &>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
+systemctl status catalogue -l &>> $LOGFILE
+stat
+}

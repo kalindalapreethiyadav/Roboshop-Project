@@ -14,9 +14,3 @@ echo "***************************************"
 
 Nodejs
 
-echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl daemon-reload
-systemctl start catalogue &>> $LOGFILE
-systemctl enable catalogue &>> $LOGFILE
-systemctl status catalogue -l &>> $LOGFILE
-stat
