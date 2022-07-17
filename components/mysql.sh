@@ -27,8 +27,7 @@ stat
 #SQL root password default
 echo -n "Configuring SQL default password :"
 echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
-Default_root_password=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
-
+Default_root_password=$(sudo grep "root@localhost" /var/log/mysqld.log | awk -F: '{print $NF}' | awk -F ';' '{print $1}')
 mysql --connect-expired-password -uroot -p"$Default_root_password" < /tmp/root_password_change.sql
-
+stat
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
