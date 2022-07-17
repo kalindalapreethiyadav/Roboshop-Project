@@ -19,3 +19,14 @@ else
     echo -e "\e[31m FAILURE! \e[0m"
 fi
 }
+Nodejs()
+{
+echo -n " Configuring $APPNAME Repository :"
+curl -sL $APP_REPOS_URL|bash &>> $LOGFILE
+stat
+
+echo -n " Installing $APPNAME:"
+yum install nodejs -y >> $LOGFILE
+stat
+
+}

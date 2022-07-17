@@ -11,13 +11,7 @@ APP_REPOS_URL="https://rpm.nodesource.com/setup_lts.x"
 source components/common.sh
 
 echo "***************************************"
-echo -n " Configuring $APPNAME Repository :"
-curl -sL $APP_REPOS_URL|bash &>> $LOGFILE
-stat
-
-echo -n " Installing $APPNAME:"
-yum install nodejs -y >> $LOGFILE
-stat
+Nodejs
 
 echo -n "Adding user"
 id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
