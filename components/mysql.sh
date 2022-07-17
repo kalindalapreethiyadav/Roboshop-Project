@@ -25,9 +25,13 @@ systemctl start $APPNAME &>> $LOGFILE
 stat
 
 #SQL root password default
+
+echo "show databases" | echo mysql -uroot -pRoboShop@1 &>> $LOGFILE
+if [ 0 -ne $?] ; then
 echo -n "Configuring SQL default password :"
 echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
 Default_root_password=$(sudo grep "root@localhost" /var/log/mysqld.log | awk -F: '{print $NF}' | awk -F ';' '{print $1}')
 mysql --connect-expired-password -uroot -p"$Default_root_password" < /tmp/root_password_change.sql
 stat
+fi
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
