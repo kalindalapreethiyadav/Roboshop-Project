@@ -20,6 +20,6 @@ yum install $COMPONENT-community-server -y &>> $LOGFILE
 stat
 
 echo -n "Enable and start $COMPONENT Service"
-systemctl enable $APPNAME &>> $LOGFILE
-systemctl start $APPNAME &>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
+systemctl start $COMPONENT &>> $LOGFILE
 stat
