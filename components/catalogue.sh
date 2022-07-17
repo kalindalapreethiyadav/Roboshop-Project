@@ -20,11 +20,6 @@ echo -n " Installing $APPNAME:"
 yum install nodejs -y >> $LOGFILE
 stat
 
-echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl enable $APPNAME &>> $LOGFILE
-systemctl start $APPNAME &>> $LOGFILE
-stat
-
 echo "Adding user"
 useradd roboshop
 stat
