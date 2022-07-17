@@ -37,10 +37,13 @@ echo -n "cleaning up:"
 cd /home/roboshop && rm -rf $COMPONENT
 stat 
 
-echo -n "Extract component:"
+echo -n "Extract $COMPONENT:"
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 mv $COMPONENT-main catalogue
 cd /home/$PROJECTNAME/$COMPONENT
 stat
 
+echo -n "Installing $COMPONENT :"
+npm install
+stat
