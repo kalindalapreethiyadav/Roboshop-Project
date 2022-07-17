@@ -20,6 +20,7 @@ yum install $APPNAME-6.2.7 -y &>> $LOGFILE
 stat
 
 #Update the BindIP from 127.0.0.1 to 0.0.0.0 in config file /etc/redis.conf & /etc/redis/redis.conf
+echo -n "Lisnter configuration updating:"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis/redis.conf
 stat
