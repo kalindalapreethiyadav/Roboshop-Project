@@ -11,7 +11,7 @@ REPOS_Link="https://github.com/stans-robot-project/frontend/archive/main.zip"
 source components/common.sh
 
 echo  "**************************************"
-echo -n "Installing NGINX"
+echo -n "Installing $APPNAME"
 yum install $APPNAME -y &>> $LOGFILE
 stat
 
@@ -29,12 +29,12 @@ stat
 
 
 echo "***************************************"
-echo -n "download the HTDOCS content and deploy it under the Nginx path"
+echo -n "download the HTDOCS content and deploy it under the $APPNAME path"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
 echo "**************************************"
-echo -n "Deploy in Nginx Default Location"
+echo -n "Deploy in $APPNAME Default Location"
 cd /usr/share/$APPNAME/html
 rm -rf *
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
