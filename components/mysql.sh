@@ -23,3 +23,12 @@ echo -n "Enable and start $COMPONENT Service"
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
+
+#SQL root password default
+echo -n "Configuring SQL default password :"
+echo "SET PASSWORD FOR 'root@localhost' = PASSWORD(-pRoboShop@1);" > /tmp/root_password_change.sql
+Default_root_password=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
+
+mysql --connect-expired-password -uroot -p$Default_root_password < /tmp/root_password_change.sql
+
+echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
