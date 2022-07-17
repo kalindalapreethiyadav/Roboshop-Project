@@ -27,11 +27,12 @@ stat
 
 
 echo "***************************************"
+echo -n "download the HTDOCS content and deploy it under the Nginx path"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
 echo "**************************************"
-echo -n "Cleaning up"
+echo -n "Deploy in Nginx Default Location"
 cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip
@@ -39,3 +40,4 @@ mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
+stat
