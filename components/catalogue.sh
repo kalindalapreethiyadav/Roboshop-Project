@@ -13,7 +13,7 @@ source components/common.sh
 
 echo "***************************************"
 echo -n " Configuring $APPNAME Repository :"
-curl -sL $APP_REPOS_URL| bash &>> $LOGFILE
+curl -sL $APP_REPOS_URL|bash &>> $LOGFILE
 stat
 
 echo -n " Installing $APPNAME:"
