@@ -19,6 +19,8 @@ else
     echo -e "\e[31m FAILURE! \e[0m"
 fi
 }
+
+
 Nodejs()
 {
 echo -n " Configuring $APPNAME Repository :"
@@ -28,8 +30,10 @@ stat
 echo -n " Installing $APPNAME:"
 yum install nodejs -y >> $LOGFILE
 stat
+
 #calling cretae user function 
 Create_User
+
 #calling Download and extract function
 Download_and_Extract
 
@@ -37,6 +41,9 @@ cd /home/$PROJECTNAME/$COMPONENT
 echo -n "Installing $COMPONENT :"
 npm install &>> $LOGFILE
 stat
+
+#calling config user function
+Config_user
 }
 
 Create_User()
@@ -44,8 +51,6 @@ Create_User()
 echo -n "Adding user"
 id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
 stat
-#calling config user function
-Config_user
 }
 
 Download_and_Extract()
@@ -74,5 +79,4 @@ Config_user()
 sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 stat
-
 }
