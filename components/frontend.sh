@@ -7,10 +7,10 @@ source components/common.sh
 
 #All output need to be redirected to log file 
 COMPONENT=frontend
-LOGFILE=$/tmp/$COMPONENT.log
+LOGFILE="/tmp/$COMPONENT.log"
 
 echo -n "Installing NGINX"
-yum install nginx -y >>$LOGFILE
+yum install nginx -y &>> $LOGFILE
 stat
 
 
