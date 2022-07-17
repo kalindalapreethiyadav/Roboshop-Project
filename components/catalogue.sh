@@ -7,7 +7,6 @@ LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=nodejs
 PROJECTNAME=roboshop
 APP_REPOS_URL="https://rpm.nodesource.com/setup_lts.x"
-Component_REPOS="https://github.com/stans-robot-project/catalogue/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
@@ -30,17 +29,18 @@ option for user checking
 other
 
 echo -n "Downloading $COMPONENT in required path:"
-curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS &>> $LOGFILE
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
 stat
 
 echo -n "cleaning up:"
-cd /home/roboshop && rm -rf $COMPONENT
+cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOGFILE
 stat 
 
 echo -n "Extract $COMPONENT:"
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
-mv $COMPONENT-main catalogue
+mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
+cd $COMPONENT
 stat
 
 
