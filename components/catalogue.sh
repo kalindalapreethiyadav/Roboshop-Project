@@ -35,8 +35,11 @@ stat
 
 cd /home/roboshop
 echo -n "cleaning up:"
+cd /home/roboshop && rm -rf *
+stat 
+
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
-cp $COMPONENT-main catalogue
+mv $COMPONENT-main catalogue
 cd /home/$PROJECTNAME/$COMPONENT
 stat
