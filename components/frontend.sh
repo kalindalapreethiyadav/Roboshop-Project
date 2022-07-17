@@ -17,7 +17,7 @@ stat
 
 echo "***************************************"
 
-echo -n "enabling & $COMPONENT nginx"
+echo -n "enabling & strating $COMPONENT nginx Service"
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
