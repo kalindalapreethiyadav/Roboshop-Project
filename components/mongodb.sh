@@ -25,7 +25,7 @@ systemctl start $APPNAME &>> $LOGFILE
 stat
 
 #Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
-echo -n "updating conf file"
+echo -n "updating listening address conf file"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat
 
@@ -39,16 +39,15 @@ curl -s -L -o /tmp/$COMPONENT.zip $SCHEMA_REPOS &>> $LOGFILE
 stat
 echo "---------------------------------"
 
-<<con
-echo -n "extracting $APPNAME downloaded files:"
 cd /tmp
-unzip $COMPONENT.zip &>> $LOGFILE
-cd $COMPONENT-main
+echo -n "extracting $APPNAME downloaded files:"
+unzip -o $COMPONENT.zip &>> $LOGFILE
 stat
 
+cd $COMPONENT-main
 echo -n "Injecting data to $APPNAME"
 mongo < catalogue.js &>> $LOGFILE
 mongo < users.js &>> $LOGFILE
 stat
+
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
-con
