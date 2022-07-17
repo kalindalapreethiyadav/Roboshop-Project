@@ -41,4 +41,4 @@ mv static/* .
 rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/$APPNAME/default.d/$PROJECTNAME.conf
 stat
-echo "******Succesfully completed Configuration*************"
+echo -e "\e[34m ******Succesfully completed Configuration*************\e[0m"
