@@ -14,20 +14,6 @@ echo "***************************************"
 
 Nodejs
 
-echo -n "Downloading $COMPONENT in required path:"
-curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
-stat
-
-echo -n "cleaning up:"
-cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOGFILE
-stat 
-
-echo -n "Extract $COMPONENT:"
-cd /home/roboshop
-unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
-mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
-cd $COMPONENT
-stat
 
 
 cd /home/$PROJECTNAME/$COMPONENT
