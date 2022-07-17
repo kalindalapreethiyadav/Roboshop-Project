@@ -49,14 +49,15 @@ echo -n "Installing $COMPONENT :"
 npm install &>> $LOGFILE
 stat
 
-sudo su - $PROJECTNAME &>> $LOGFILE
-cd /home/$PROJECTNAME/$COMPONENT
+echo -n "Configuring DB Domain NameSpace:"
+#sudo su - $PROJECTNAME &>> $LOGFILE
+#cd /home/$PROJECTNAME/$COMPONENT
 sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 stat
 
 echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload 
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
