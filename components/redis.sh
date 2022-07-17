@@ -12,7 +12,7 @@ source components/common.sh
 
 echo "***************************************"
 echo -n "Configuring the $COMPONENT Repository :"
-curl -L  -o $APP_REPOS_URL -o /etc/yum.repos.d/redis.repo &>> $LOGFILE
+curl -L https://raw.githubusercontent.com/stans-robot-project/$APPNAME/main/redis.repo -o /etc/yum.repos.d/$APPNAME.repo
 stat
 
 echo -n "Installing $COMPONENT :"
