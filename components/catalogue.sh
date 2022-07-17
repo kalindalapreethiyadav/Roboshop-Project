@@ -20,9 +20,15 @@ echo -n " Installing $APPNAME:"
 yum install nodejs -y >> $LOGFILE
 stat
 
-echo "Adding user"
-useradd roboshop
+echo -n "Adding user"
+if [echo "$(id Roboshop)" || echo "$(useradd roboshop)" ] ; then
+fi
 stat
+
+<<other 
+option for user checking
+
+other
 
 echo -n "Downloading $COMPONENT in required path:"
 $ curl -s -L -o /tmp/${COMPONENT}.zip $Component_REPOS
