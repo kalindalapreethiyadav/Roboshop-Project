@@ -37,7 +37,6 @@ echo "****************************************"
 echo -n "download the $COMPONENT schema content"
 curl -s -L -o /tmp/$COMPONENT.zip $SCHEMA_REPOS &>> $LOGFILE
 stat
-echo "---------------------------------"
 
 cd /tmp
 echo -n "Now extracting $APPNAME schema files:"
