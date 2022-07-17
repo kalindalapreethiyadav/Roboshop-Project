@@ -24,4 +24,7 @@ cart:
 redis:
 	sh components/redis.sh
 
+mysql:
+	sh components/mysql.sh
+
 
