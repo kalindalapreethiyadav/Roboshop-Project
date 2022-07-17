@@ -1,18 +1,21 @@
 #!/bin/bash/
 
+#if any line of cmd code have error then exit the script
+set -e 
+
 #I need to validate whether user in root or not.
 #script should run as root only.
 #user id of root is '0' for any system id -u is '0' for any system
 #uid=0(root) gid=0(root) groups=0(root)
+
 USER_ID=$(id -u) 
 #inside root the "id -u" o/p is "0"
-if[ $USER_ID -ne 0 ] ; then
+if[ $(USER_ID) -ne 0 ] ; then
     echo -e "\e[32;43m Hey! Soory, You need to run as ROOT Access permission \e[0m"
     exit 1
 fi
 
-#if any line of cmd code have error then exit the script
-set -e 
+
 
 echo "This is my frontend script"
 yum install nginx -y
