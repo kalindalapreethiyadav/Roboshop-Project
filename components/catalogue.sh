@@ -13,14 +13,7 @@ source components/common.sh
 echo "***************************************"
 Nodejs
 
-echo -n "Adding user"
-id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
-stat
-
-<<other 
-option for user checking
-
-other
+Create_User
 
 echo -n "Downloading $COMPONENT in required path:"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE

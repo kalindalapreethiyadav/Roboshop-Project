@@ -30,3 +30,10 @@ yum install nodejs -y >> $LOGFILE
 stat
 
 }
+
+Create_User()
+{
+echo -n "Adding user"
+id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
+stat
+}
