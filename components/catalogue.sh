@@ -30,11 +30,11 @@ option for user checking
 other
 
 echo -n "Downloading $COMPONENT in required path:"
-$ curl -s -L -o /tmp/${COMPONENT}.zip $Component_REPOS
+$ curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
 $ cd /home/roboshop
-$ unzip /tmp/${COMPONENT}.zip
-$ mv ${COMPONENT}-main ${COMPONENT}
-$ cd /home/${PROJECTNAME}/${COMPONENT}
+$ unzip /tmp/$COMPONENT.zip
+$ mv $COMPONENT-main $COMPONENT
+$ cd /home/$PROJECTNAME/$COMPONENT
 
 echo -n "installing $COMPONENT :"
 $ npm install
