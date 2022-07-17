@@ -34,7 +34,7 @@ curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
 stat
 
 echo -n "cleaning up:"
-cd /home/roboshop && rm -rf *
+cd /home/roboshop && rm -rf $COMPONENT
 stat 
 
 echo -n "Extract component:"
