@@ -12,11 +12,11 @@ source components/common.sh
 
 echo "***************************************"
 echo -n "Configuring the $COMPONENT Repository :"
-curl -L  -o $APP_REPOS_URL -o /etc/yum.repos.d/redis.repo
+curl -L  -o $APP_REPOS_URL -o /etc/yum.repos.d/redis.repo &>> $LOGFILE
 stat
 
 echo -n "Installing $COMPONENT :"
-yum install $APPNAME-6.2.7 -y
+yum install $APPNAME-6.2.7 -y &>> $LOGFILE
 stat
 
 #Update the BindIP from 127.0.0.1 to 0.0.0.0 in config file /etc/redis.conf & /etc/redis/redis.conf
