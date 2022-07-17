@@ -32,7 +32,7 @@ other
 echo -n "Downloading $COMPONENT in required path:"
 curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
 stat
-$ cd /home/roboshop
+$ cd /home/$PROJECTNAME
 $ unzip /tmp/$COMPONENT.zip
 $ mv $COMPONENT-main $COMPONENT
 $ cd /home/$PROJECTNAME/$COMPONENT
