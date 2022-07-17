@@ -17,20 +17,19 @@ stat
 
 echo "***************************************"
 
-echo -n "enabling & starting $COMPONENT nginx"
+echo -n "enabling & $COMPONENT nginx"
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
 
 
-echo "***************************************"
+echo "****************************************************"
 echo "download the HTDOCS content and deploy it under the $APPNAME path"
-
+echo "---------------------------------"
 echo -n "download the HTDOCS content:"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
-echo "**************************************"
 echo "Deploy started in $APPNAME Default Location"
 
 echo -n "cleaning up old files:"
