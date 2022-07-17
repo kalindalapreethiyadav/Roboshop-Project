@@ -37,7 +37,7 @@ echo "**************************************"
 echo -n "Deploy in Nginx Default Location"
 cd /usr/share/$APPNAME/html
 rm -rf *
-unzip /tmp/$COMPONENT.zip
+unzip /tmp/$COMPONENT.zip &>> $LOGFILE
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
