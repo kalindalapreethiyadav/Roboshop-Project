@@ -4,7 +4,7 @@ set -e
 COMPONENT=mysql
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
-APPNAME=mysql
+APPNAME=mysqld
 PROJECTUSER=roboshop
 APP_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
 #lets call all common function fucntions for validating and other common func for all componets
@@ -20,6 +20,6 @@ yum install $COMPONENT-community-server -y &>> $LOGFILE
 stat
 
 echo -n "Enable and start $COMPONENT Service"
-systemctl enable $COMPONENT &>> $LOGFILE
-systemctl start $COMPONENT &>> $LOGFILE
+systemctl enable $APPNAME &>> $LOGFILE
+systemctl start $APPNAME &>> $LOGFILE
 stat
