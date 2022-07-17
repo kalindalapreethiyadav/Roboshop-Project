@@ -15,7 +15,7 @@ echo -n "Installing $APPNAME"
 yum install $APPNAME -y &>> $LOGFILE
 stat
 
-echo -n "Enable and start $COMPONENT nginx Service"
+echo -n "Enable and start $COMPONENT $APPNAME Service"
 systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
