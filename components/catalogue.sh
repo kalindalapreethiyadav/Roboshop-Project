@@ -33,11 +33,12 @@ echo -n "Downloading $COMPONENT in required path:"
 curl -s -L -o /tmp/$COMPONENT.zip $Component_REPOS
 stat
 
-$ cd /home/$PROJECTNAME
+cd /home/roboshop
 echo -n "cleaning up:"
-$ unzip /tmp/$COMPONENT.zip
-$ mv $COMPONENT-main $COMPONENT
-$ cd /home/$PROJECTNAME/$COMPONENT
+cd /home/roboshop
+unzip /tmp/catalogue.zip
+mv catalogue-main catalogue
+cd /home/roboshop/catalogue
 stat
 
 echo -n "installing $COMPONENT :"
