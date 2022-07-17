@@ -1,9 +1,12 @@
 #!/bin/bash/
 
-#I need to validate wether user in root or not then only run the script as root user.
+#I need to validate whether user in root or not.
+#script should run as root only.
+#user id of root is '0' for any system id -u is '0' for any system
+#uid=0(root) gid=0(root) groups=0(root)
 user_id=$(id -u) #inside root the "id -u" o/p is "0"
-if [$User_id -ne 0] ; then
-    echo "\e[32;43m you need to run as ROOT Admin \e[0m"
+if [$(user_id) -ne 0] ; then
+    echo "\e[32;43m Hey! Soory, You need to run as ROOT Access permission \e[0m"
     exit 1
 fi
 
