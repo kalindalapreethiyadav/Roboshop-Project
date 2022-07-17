@@ -30,7 +30,7 @@ echo -n "download the HTDOCS content:"
 curl -s -L -o /tmp/$COMPONENT.zip $REPOS_Link &>> $LOGFILE
 stat
 
-echo "Deploy started in $APPNAME Default Location"
+echo "Deploy in $APPNAME Default Location"
 
 echo -n "cleaning up old files:"
 cd /usr/share/$APPNAME/html
@@ -41,7 +41,7 @@ echo -n "extracting downloaded files:"
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
-echo -n "updtaing proy file:"
+echo -n "updtaing proxy file:"
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
