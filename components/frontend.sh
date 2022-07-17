@@ -4,25 +4,27 @@ set -e
 COMPONENT=frontend
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
+APPNAME=nginx
+PROJECTNAME=roboshop
 REPOS_Link="https://github.com/stans-robot-project/frontend/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
 echo  "**************************************"
 echo -n "Installing NGINX"
-yum install nginx -y &>> $LOGFILE
+yum install $APPNAME -y &>> $LOGFILE
 stat
 
 echo "***************************************"
 
 echo -n "enabling $COMPONENT nginx"
-systemctl enable nginx &>> $LOGFILE
+systemctl enable $APPNAME &>> $LOGFILE
 stat
 
 echo "***************************************"
 
 echo -n "Starting $COMPONENT nginx"
-systemctl start nginx &>> $LOGFILE
+systemctl start $APPNAME &>> $LOGFILE
 stat
 
 
@@ -33,11 +35,11 @@ stat
 
 echo "**************************************"
 echo -n "Deploy in Nginx Default Location"
-cd /usr/share/nginx/html
+cd /usr/share/$APPNAME/html
 rm -rf *
-unzip /tmp/frontend.zip
-mv frontend-main/* .
+unzip /tmp/$COMPONENT.zip
+mv $COMPONENT-main/* .
 mv static/* .
-rm -rf frontend-main README.md
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+rm -rf $COMPONENT-main README.md
+mv localhost.conf /etc/$APPNAME/default.d/$PROJECTNAME.conf
 stat
