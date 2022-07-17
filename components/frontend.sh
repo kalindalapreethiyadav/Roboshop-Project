@@ -32,7 +32,7 @@ stat
 
 echo "Deploy in $APPNAME Default Location"
 
-echo -n "cleaning up old files:"
+echo -n "clean up old files:"
 cd /usr/share/$APPNAME/html
 rm -rf *
 stat
@@ -41,7 +41,7 @@ echo -n "extracting downloaded files:"
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
-echo -n "updtaing proxy file:"
+echo -n "updating proxy file:"
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
