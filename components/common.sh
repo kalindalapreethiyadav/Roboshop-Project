@@ -28,7 +28,8 @@ stat
 echo -n " Installing $APPNAME:"
 yum install nodejs -y >> $LOGFILE
 stat
-
+#calling cretae user function 
+Create_User
 }
 
 Create_User()

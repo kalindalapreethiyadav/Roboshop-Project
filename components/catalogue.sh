@@ -11,9 +11,8 @@ APP_REPOS_URL="https://rpm.nodesource.com/setup_lts.x"
 source components/common.sh
 
 echo "***************************************"
-Nodejs
 
-Create_User
+Nodejs
 
 echo -n "Downloading $COMPONENT in required path:"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
