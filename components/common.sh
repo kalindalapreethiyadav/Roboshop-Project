@@ -28,7 +28,7 @@ Nodejs()
     stat
 
     echo -n " Installing $APPNAME:"
-    yum install nodejs -y >> $LOGFILE
+    yum install $APPNAME -y >> $LOGFILE
     stat
 
     #calling cretae user function 
@@ -64,7 +64,7 @@ Download_and_Extract()
     stat
 
     echo -n "cleaning up:"
-    cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOGFILE
+    cd /home/$PROJECTNAME/ && rm -rf $COMPONENT &>> $LOGFILE
     stat 
 
     echo -n "Extract $COMPONENT:"
