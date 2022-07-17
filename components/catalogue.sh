@@ -41,9 +41,15 @@ echo -n "Extract $COMPONENT:"
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 mv $COMPONENT-main catalogue
-cd /home/$PROJECTNAME/$COMPONENT
 stat
 
+
+cd /home/$PROJECTNAME/$COMPONENT
 echo -n "Installing $COMPONENT :"
 npm install &>> $LOGFILE
+stat
+
+sudo su - $PROJECTNAME
+cd /home/$PROJECTNAME/$COMPONENT
+sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
 stat
