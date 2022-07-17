@@ -23,78 +23,78 @@ fi
 
 Nodejs()
 {
-echo -n " Configuring $APPNAME Repository :"
-curl -sL $APP_REPOS_URL|bash &>> $LOGFILE
-stat
+    echo -n " Configuring $APPNAME Repository :"
+    curl -sL $APP_REPOS_URL|bash &>> $LOGFILE
+    stat
 
-echo -n " Installing $APPNAME:"
-yum install nodejs -y >> $LOGFILE
-stat
+    echo -n " Installing $APPNAME:"
+    yum install nodejs -y >> $LOGFILE
+    stat
 
-#calling cretae user function 
-Create_User
+    #calling cretae user function 
+    Create_User
 
-#calling Download and extract function
-Download_and_Extract
+    #calling Download and extract function
+    Download_and_Extract
 
-cd /home/$PROJECTNAME/$COMPONENT
-echo -n "Installing $COMPONENT :"
-npm install &>> $LOGFILE
-stat
+    cd /home/$PROJECTNAME/$COMPONENT
+    echo -n "Installing $COMPONENT :"
+    npm install &>> $LOGFILE
+    stat
 
-#calling config user function
-Config_user
+    #calling config user function
+    Config_user
 
-# Enabling and Starting the services function
-Starting_Service
+    # Enabling and Starting the services function
+    Starting_Service
 
 }
 
 Create_User()
 {
-echo -n "creating the Roboshop user:"
-id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
-stat
+    echo -n "creating the Roboshop user:"
+    id $PROJECTNAME &>>LOGFILE || useradd $PROJECTNAME
+    stat
 }
 
 Download_and_Extract()
 {
-echo -n "Downloading $COMPONENT in required path:"
-curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
-stat
+    echo -n "Downloading $COMPONENT in required path:"
+    curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
+    stat
 
-echo -n "cleaning up:"
-cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOGFILE
-stat 
+    echo -n "cleaning up:"
+    cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOGFILE
+    stat 
 
-echo -n "Extract $COMPONENT:"
-cd /home/roboshop
-unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
+    echo -n "Extract $COMPONENT:"
+    cd /home/roboshop
+    unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 #Need to change the permission for files and directories of component from "root" user to "roboshop" user
 # this can be handle by "chown -r user:group file" -r used for permision 
 #simply changing the files user and groups to "roboshop" user
 #To assign a new owner of a file component and change its group at the same time, execute the chown command in this format:
-mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
-cd $COMPONENT
-stat
+    mv $COMPONENT-main $COMPONENT && chown -R $PROJECTNAME:$PROJECTNAME $COMPONENT
+    cd $COMPONENT
+    stat
 }
 
 Config_user()
 {
     echo -n "Configuring DB Domain NameSpace:"
-#sudo su - $PROJECTNAME &>> $LOGFILE
-#cd /home/$PROJECTNAME/$COMPONENT
-sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-stat
+    #sudo su - $PROJECTNAME &>> $LOGFILE
+    #cd /home/$PROJECTNAME/$COMPONENT
+    sed -i -e 's/MONGO_DNSNAME/mongodb.robotshop.internal/' ./systemd.service
+    mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+    stat
 }
 
 Starting_Service()
 {
-echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl daemon-reload
-systemctl start catalogue &>> $LOGFILE
-systemctl enable catalogue &>> $LOGFILE
-systemctl status catalogue -l &>> $LOGFILE
-stat
+    echo -n "Enable and start $COMPONENT $APPNAME Service"
+    systemctl daemon-reload
+    systemctl start catalogue &>> $LOGFILE
+    systemctl enable catalogue &>> $LOGFILE
+    systemctl status catalogue -l &>> $LOGFILE
+    stat
 }
