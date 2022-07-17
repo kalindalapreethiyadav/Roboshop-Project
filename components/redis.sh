@@ -6,13 +6,13 @@ COMPONENT=redis
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=redis
 PROJECTUSER=roboshop
-APP_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo"
+APP_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/$COMPONENT/main/redis.repo"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
 echo "***************************************"
 echo -n "Configuring the $COMPONENT Repository :"
-curl -L  -o $APP_REPOS_URL /etc/yum.repos.d/redis.repo
+curl -L  -o $APP_REPOS_URL -o /etc/yum.repos.d/redis.repo
 stat
 
 echo -n "Installing $COMPONENT :"
