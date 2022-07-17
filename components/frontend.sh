@@ -11,7 +11,7 @@ set -e
 USER_ID=$(id -u) 
 #inside root the "id -u" o/p is "0"
 if [ $USER_ID -ne 0 ] ; then
-    echo -e "\e[32;43m Hey! Soory, You need to run as ROOT Access permission \e[0m"
+    echo -e "\e[32;42m Hey! Soory, You need to run as ROOT Access permission \e[0m"
     exit 1
 fi
 
