@@ -6,13 +6,13 @@ COMPONENT=mongodb
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=mongod
 PROJECTNAME=roboshop
-REPOS="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
+$MONGODB_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
 SCHEMA_REPOS="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
 echo -n "Downloading $APPNAME Repsoitory"
-curl -s -o /etc/yum.repos.d/mongodb.repo $REPOS &>> $LOGFILE
+curl -s -o /etc/yum.repos.d/mongodb.repo $MONGODB_REPOS_URL &>> $LOGFILE
 
 echo "***************************************"
 echo -n "Installing $APPNAME"
@@ -44,9 +44,10 @@ cd /tmp
 unzip $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 stat
-
+<<con
 echo -n "Injecting data to $APPNAME"
 mongo < catalogue.js &>> $LOGFILE
 mongo < users.js &>> $LOGFILE
 stat
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
+con
