@@ -31,7 +31,7 @@ stat
 #calling cretae user function 
 Create_User
 #calling Download and extract function
-Download_and_Extract()
+Download_and_Extract
 }
 
 Create_User()
