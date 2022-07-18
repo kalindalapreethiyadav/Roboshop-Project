@@ -30,7 +30,8 @@ echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOGFILE
 if [ 0 -ne $? ] ; then
     echo -n "Configuring SQL default password :"
     # we are saving the Query of new root password change and saving in a file.sql
-    echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
+    #echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
+    echo "RoboShop@1" > /tmp/root_password_change.sql
     # 1.first we are finding out the default temperory password on MYSQL in mysqlid
     stat
     Var1=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
