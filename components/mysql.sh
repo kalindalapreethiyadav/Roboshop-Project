@@ -39,7 +39,7 @@ if [ 0 -ne $? ] ; then
     echo $Var1
     echo -n "changing password : "
     cat /tmp/root_password_change.sql
-    #mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
+    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
 
