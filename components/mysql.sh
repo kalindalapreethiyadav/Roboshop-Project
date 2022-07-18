@@ -1,6 +1,5 @@
 #!/bin/bash/
 #if any line of cmd code have error then exit the script
-set -e 
 COMPONENT=mysql
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
