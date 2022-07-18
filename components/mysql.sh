@@ -66,7 +66,7 @@ cd $COMPONENT-main
 stat
 
 echo -n "Injecting the Shipping data"
-mysql -uroot -pRoboShop@1 <shipping.sql
+mysql -uroot -pRoboShop@1 < shipping.sql
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
