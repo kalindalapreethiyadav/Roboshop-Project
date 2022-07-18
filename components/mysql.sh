@@ -62,11 +62,10 @@ stat
 echo -n Cleaning up :
 cd /tmp
 unzip -o $COMPONENT.zip &>> $LOGFILE
-cd $COMPONENT-main
 stat
 
 echo -n "Injecting the Shipping data"
-cd $-main && mysql -uroot -pRoboShop@1 < shipping.sql
+cd $COMPONENT-main && mysql -uroot -pRoboShop@1 < shipping.sql
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
