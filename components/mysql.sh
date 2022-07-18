@@ -67,7 +67,7 @@ echo -n "Injecting the Shipping data"
 cd $COMPONENT-main
 pwd
 ls
-mysql -u root -pRoboShop@1 < shipping.sql &>>$LOGFILE
+mysql -u root -pRoboShop@1 < ./shipping.sql &>>$LOGFILE
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
