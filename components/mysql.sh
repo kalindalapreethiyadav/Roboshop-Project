@@ -24,6 +24,12 @@ systemctl enable $APPNAME &>> $LOGFILE
 systemctl start $APPNAME &>> $LOGFILE
 stat
 
+echo -n "checking :"
+Var1=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
+echo $Var1
+stat
+
+<<cmd
 #SQL root password default
 #if above statment able to conenct using new password then not required to perform below steps
 echo -n "stating $COMPONENT validation : "
@@ -33,10 +39,10 @@ echo -n "Configuring SQL default password :"
 # we are saving the Query of new root password change and saving in a file.sql
 echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
  # 1.first we are finding out the default temperory password on MYSQL in mysqlid
-Default_root_password=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
+Default_Root_Password=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
 stat
     #2. we are login with default root temperory password and injecting the New password
-mysql --connect-expired-password -uroot -p"$(Default_root_password)" < /tmp/root_password_change.sql
+mysql --connect-expired-password -uroot -p$Default_Root_Password < /tmp/root_password_change.sql
 stat
 #fi
 
