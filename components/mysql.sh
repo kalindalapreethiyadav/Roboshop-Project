@@ -45,7 +45,6 @@ fi
 
 echo -n "unistalling pulgins :"
 echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
-stat
 if [ $? -ne 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
     echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
