@@ -36,8 +36,9 @@ if [ 0 -ne $? ] ; then
     Var1=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
     #2. we are login with default root temperory password & injecting the cmd for New password chng
     stat
+    echo $Var1
     echo -n "changing password : "
-    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
+    #mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
 
