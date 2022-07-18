@@ -65,7 +65,7 @@ unzip -o $COMPONENT.zip &>> $LOGFILE
 stat
 
 echo -n "Injecting the Shipping data"
-cd $COMPONENT-main && mysql -uroot -pRoboShop@1 <shipping.sql &>>$LOGFILE
+cd $COMPONENT-main && mysql -u root -pRoboShop@1 <shipping.sql &>>$LOGFILE
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
