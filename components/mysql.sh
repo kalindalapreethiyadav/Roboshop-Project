@@ -60,8 +60,7 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/mysql/
 stat
 
 echo -n Cleaning up :
-cd /tmp
-unzip -o $COMPONENT.zip &>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
 echo -n "Injecting the Shipping data"
