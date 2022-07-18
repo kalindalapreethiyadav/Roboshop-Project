@@ -61,7 +61,7 @@ stat
 
 echo -n Cleaning up :
 cd /tmp
-unzip -o $COMPONENT.zip
+unzip -o $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 stat
 
