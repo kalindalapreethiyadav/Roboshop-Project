@@ -55,4 +55,8 @@ if [ $? -eq 0 ] ; then
 fi
 stat
 
+echo -n "Downloading teh schema :"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat
+
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
