@@ -27,7 +27,7 @@ stat
 #SQL root password default
 #if above statment able to conenct using new password then not required to perform below steps
 echo -n "stating $COMPONENT validation : "
-if [ 0 -ne $? ] ; then
+#if [ 0 -ne $? ] ; then
     echo -n "Configuring SQL default password :"
     # we are saving the Query of new root password change and saving in a file.sql
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
@@ -37,7 +37,7 @@ if [ 0 -ne $? ] ; then
     #2. we are login with default root temperory password and injecting the New password
     mysql --connect-expired-password -uroot -p"$(Default_root_password)" < /tmp/root_password_change.sql
     stat
-fi
+#fi
 
 <<cmd
 echo "show pulgins" | echo mysql -uroot -pRoboShop@1 | grep "validate_password" &>> $LOGFILE
