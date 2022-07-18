@@ -44,7 +44,7 @@ if [ 0 -ne $? ] ; then
 fi
 
 echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
-if [ 0 -eq $? ] ; then
+if [ $? -eq 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
     echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
     mysql --connect-expired-password -uroot -p"$Default_root_password" < /tmp/root_password_change.sql
