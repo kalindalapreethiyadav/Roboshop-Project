@@ -27,8 +27,6 @@ stat
 #if above statment able to conenct using new password then not required to perform below steps
 echo -n "stating $COMPONENT validation : "
 echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOGFILE
-stat
-<<cmd
 if [ 0 -ne $? ] ; then
     echo -n "Configuring SQL default password :"
     # we are saving the Query of new root password change and saving in a file.sql
