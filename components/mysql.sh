@@ -32,14 +32,14 @@ if [ 0 -ne $? ] ; then
     # we are saving the Query of new root password change and saving in a file.sql
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
     # 1.first we are finding out the default temperory password on MYSQL in mysqlid
-    stat
+    #stat
     Var1=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
     #2. we are login with default root temperory password & injecting the cmd for New password chng
     stat
     echo $Var1
     echo -n "changing password : "
     cat /tmp/root_password_change.sql
-    mysql --connect-expired-password -uroot -p$Var1 < echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');"
+    mysql --connect-expired-password -uroot -pRoboShop@2 < /tmp/root_password_change.sql
     stat
 fi
 
