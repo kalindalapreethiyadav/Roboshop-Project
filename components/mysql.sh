@@ -42,6 +42,7 @@ if [ 0 -ne $? ] ; then
     mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
+stat
 
 echo -n "unistalling pulgins :"
 echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
