@@ -52,5 +52,6 @@ if [ $? -eq 0 ] ; then
     mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
+stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
