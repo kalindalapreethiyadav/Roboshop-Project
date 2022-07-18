@@ -39,17 +39,17 @@ if [ 0 -ne $? ] ; then
     echo $Var1
     echo -n "changing password : "
     cat /tmp/root_password_change.sql
-    mysql --connect-expired-password -uroot -pRoboShop@2 < /tmp/root_password_change.sql
+    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
 
 echo -n "unistalling pulgins :"
 echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
-if [ $? -ne 0 ] ; then
+if [ $? -eq 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
     echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
     stat
-    mysql --connect-expired-password -uroot -pRoboShop@1 < /tmp/root_password_change.sql
+    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
 
