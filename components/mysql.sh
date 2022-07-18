@@ -43,6 +43,7 @@ if [ 0 -ne $? ] ; then
     stat
 fi
 
+echo -n "unistalling pulgins :"
 echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
 if [ $? -eq 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
