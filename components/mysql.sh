@@ -37,7 +37,7 @@ if [ 0 -ne $? ] ; then
     #2. we are login with default root temperory password & injecting the cmd for New password chng
     stat
     echo -n "changing password : "
-    mysql --connect-expired-password -uroot -p"$Var1" < /tmp/root_password_change.sql
+    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
     stat
 fi
 
