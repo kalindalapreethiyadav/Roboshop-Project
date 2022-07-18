@@ -32,7 +32,6 @@ if [ 0 -ne $? ] ; then
     echo -n "Configuring SQL default password :"
     # we are saving the Query of new root password change and saving in a file.sql
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
-    stat
     # 1.first we are finding out the default temperory password on MYSQL in mysqlid
     Default_root_password=$(sudo grep "root@localhost" /var/log/mysqld.log | awk -F: '{print $NF}' | awk -F ';' '{print $1}')
     stat
