@@ -65,6 +65,7 @@ stat
 pwd
 echo -n "Injecting the Shipping data"
 cd $COMPONENT-main
+pwd
 mysql -u root -pRoboShop@1 < shipping.sql &>>$LOGFILE
 stat
 
