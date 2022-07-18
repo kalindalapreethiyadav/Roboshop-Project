@@ -56,7 +56,7 @@ fi
 stat
 
 echo -n "Downloading the schema :"
-curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/mysql/archive/main.zip"
 stat
 
 echo -n Cleaning up :
