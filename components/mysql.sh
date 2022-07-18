@@ -35,7 +35,7 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/root
  # 1.first we are finding out the default temperory password on MYSQL in mysqlid
 Var1=$(sudo grep "temporary password" /var/log/mysqld.log | awk -F: '{print $NF}')
 stat
-#2. we are login with default root temperory password and injecting the New password
+#2. we are login with default root temperory password & injecting the cmd for New password chng
 echo -n "changing password : "
 mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
 stat
