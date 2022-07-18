@@ -59,4 +59,14 @@ echo -n "Downloading teh schema :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat
 
+echo -n Cleaning up :
+cd /tmp
+unzip -o $COMPONENT.zip
+cd $COMPONENT-main
+stat
+
+echo -n "Injecting the Shipping data"
+mysql -u root -pRoboShop@1 <shipping.sql
+stat
+
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
