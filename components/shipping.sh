@@ -1,7 +1,7 @@
 #!/bin/bash/
 #if any line of cmd code have error then exit the script
 set -e 
-COMPONENT=maven
+COMPONENT=shipping
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=maven
