@@ -61,13 +61,12 @@ curl -s -L -o /tmp/mysql.zip $Schema_Url
 stat
 
 echo -n "Extracting the Schema :" :
-unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
+Cd /tmp
+unzip -o mysql.zip &>> $LOGFILE
 stat
-pwd
+
 echo -n "Injecting the Schema:"
-cd $COMPONENT-main
-pwd
-ls
+cd mysql-main/
 mysql -u root -pRoboShop@1 < shipping.sql &>>$LOGFILE
 stat
 
