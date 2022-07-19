@@ -64,7 +64,7 @@ echo -n "Extracting the Schema :" :
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
-echo -n "Injecting the Schema:"
+echo "Injecting the Schema:"
 cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>> $LOGFILE
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
