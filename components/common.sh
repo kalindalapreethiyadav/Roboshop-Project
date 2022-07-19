@@ -112,7 +112,6 @@ Installing_Maven()
     Download_and_Extract
 
     echo -n "cleaning packages :"
-    cd $COMPONENT
     mvn clean package 
     mv target/shipping-1.0.jar shipping.jar
     stat
