@@ -66,8 +66,7 @@ unzip -o mysql.zip &>> $LOGFILE
 stat
 
 echo -n "Injecting the Schema:"
-cd mysql-main/
-mysql -u root -pRoboShop@1 < shipping.sql &>>$LOGFILE
+cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>>$LOGFILE
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
