@@ -112,8 +112,8 @@ Installing_Maven()
     Download_and_Extract
 
     echo -n "cleaning packages :"
-    mvn clean package 
-    mv target/shipping-1.0.jar shipping.jar
+    mvn clean package &>> $LOGFILE
+    mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
     stat
 
     echo -n "Configuring DB Domain NameSpace:"
