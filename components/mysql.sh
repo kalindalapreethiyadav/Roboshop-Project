@@ -6,6 +6,7 @@ LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=mysqld
 PROJECTUSER=roboshop
 APP_REPOS_URL="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
+Schema_Url="https://github.com/stans-robot-project/mysql/archive/main.zip"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
@@ -50,13 +51,13 @@ if [ $? -eq 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
     echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
     stat
-    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql
+    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql &>> $LOGFILE
     stat
 fi
 stat
 
 echo -n "Downloading the schema :"
-curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/mysql/archive/main.zip"
+curl -s -L -o /tmp/$COMPONENT.zip $Schema_Url
 stat
 
 echo -n Cleaning up :
