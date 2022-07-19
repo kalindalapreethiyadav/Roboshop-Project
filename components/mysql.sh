@@ -57,18 +57,18 @@ fi
 stat
 
 echo -n "Downloading the schema :"
-curl -s -L -o /tmp/$COMPONENT.zip $Schema_Url
+curl -s -L -o /tmp/mysql.zip $Schema_Url
 stat
 
-echo -n Cleaning up :
+echo -n "Extracting the Schema :" :
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 pwd
-echo -n "Injecting the Shipping data"
+echo -n "Injecting the Schema:"
 cd $COMPONENT-main
 pwd
 ls
-mysql -u root -pRoboShop@1 < ./shipping.sql &>>$LOGFILE
+mysql -u root -pRoboShop@1 < shipping.sql &>>$LOGFILE
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
