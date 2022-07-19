@@ -111,9 +111,11 @@ Installing_Maven()
     #calling Download and extract function
     Download_and_Extract
 
+    echo -n "cleaning packages :"
     cd shipping
     mvn clean package 
     mv target/shipping-1.0.jar shipping.jar
+    stat
 
     echo -n "Configuring DB Domain NameSpace:"
     sed -i -e 's/CARTENDPOINT/cart.robotshop.internal/' -e 's/DBHOST/mysql.robotshop.internal/' ./systemd.service
@@ -121,6 +123,5 @@ Installing_Maven()
     stat
 
     Starting_Service
-    
 
 }
