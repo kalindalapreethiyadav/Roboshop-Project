@@ -61,8 +61,7 @@ curl -s -L -o /tmp/mysql.zip $Schema_Url
 stat
 
 echo -n "Extracting the Schema :" :
-Cd /tmp/
-unzip -o $COMPONENT.zip &>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
 echo -n "Injecting the Schema:"
