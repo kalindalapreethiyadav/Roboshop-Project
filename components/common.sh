@@ -98,3 +98,29 @@ Starting_Service()
     systemctl status $COMPONENT -l &>> $LOGFILE
     stat
 }
+
+Installing_Maven()
+{
+    echo -n " Installing Maven "
+    yum install $APPNAME -y &>> $LOGFILE
+    stat
+
+    #calling cretae user function 
+    Create_User
+
+    #calling Download and extract function
+    Download_and_Extract
+
+    cd shipping
+    mvn clean package 
+    mv target/shipping-1.0.jar shipping.jar
+
+    echo -n "Configuring DB Domain NameSpace:"
+    sed -i -e 's/CARTENDPOINT/cart.robotshop.internal/' -e 's/DBHOST/mysql.robotshop.internal/' ./systemd.service
+    mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+    stat
+
+    Starting_Service
+    
+
+}
