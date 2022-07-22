@@ -30,5 +30,8 @@ mysql:
 shipping:
 	sh components/shipping.sh
 
+RabbitMQ:
+	sh components/RabbitMQ.sh
+
 
 
