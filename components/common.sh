@@ -144,6 +144,9 @@ pip3 install -r requirements.txt &>> $LOGFILE
 stat
 
 echo -e  "configuration update for the user and group id:"
+userid=$(id -u roboshop)
+groupid=$(id -g roboshop)
+
 sed -i -e "/uid/ c uid = $userid" payment.ini
 sed -i -e "/gid/ c gid = $groupid" payment.ini
 stat
