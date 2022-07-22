@@ -140,7 +140,7 @@ Download_and_Extract
 
 echo -n "Installing requirments :"
 cd /home/roboshop/$COMPONENT 
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt &>> $LOGFILE
 stat
 
 #echo $id roboshop | awk 
