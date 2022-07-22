@@ -9,13 +9,12 @@ PROJECTUSER=roboshop
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
-echo -n "installing $APPNAME dependency: "
-yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>> $LOGFILE
+echo -n "configuring $APPNAME Repository: "
+curl -s https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh | sudo bash &>> $LOGFILE
 stat
 
-echo -n "configuring $APPNAME Repository: "
-
-curl -s https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh | sudo bash &>> $LOGFILE
+echo -n "installing $APPNAME dependency: "
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>> $LOGFILE
 stat
 
 echo -n "installing $APPNAME : "
