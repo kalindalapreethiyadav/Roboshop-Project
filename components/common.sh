@@ -124,3 +124,21 @@ Installing_Maven()
     Starting_Service
 
 }
+
+python()
+{
+
+echo -n "installing python :"
+yum install $(APPNAME)36 gcc $(APPNAME)3-devel -y &>> $LOGFILE
+
+Config_user
+
+echo -n "Installing requirments :"
+cd /home/roboshop/$COMPONENT 
+pip3 install -r requirements.txt
+stat
+
+#echo $id roboshop | awk 
+
+}
+
