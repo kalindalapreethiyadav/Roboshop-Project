@@ -31,14 +31,13 @@ stat
 echo -n "creating the $APPNAME user :"
 
 echo $(id $PROJECTUSER) &>> $LOGFILE
-if [$? -nq 0 ] ; then
+if [ $? -nq 0 ] ; then
 rabbitmqctl add_user roboshop roboshop123
+fi
 stat
-
 #rabbitmqctl set_user_tags roboshop administrator
 #rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 #stat
-fi
 
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
