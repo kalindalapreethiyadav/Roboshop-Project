@@ -183,8 +183,8 @@ go build
 stat
 
 echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl enable $APPNAME &>> $LOGFILE
-systemctl start $APPNAME #&>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
+systemctl start $COMPONENT #&>> $LOGFILE
 stat
 
 }
