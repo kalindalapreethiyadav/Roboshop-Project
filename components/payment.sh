@@ -6,6 +6,4 @@ LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=python
 PROJECTUSER=roboshop
 
-
-
 python
