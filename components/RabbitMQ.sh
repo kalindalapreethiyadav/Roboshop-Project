@@ -14,7 +14,7 @@ echo -n "installing $APPNAME dependency: "
 yum install $REPOS_URL -y &>> $LOGFILE
 stat
 
-echo -n "installing $APPNAME Repository: "
+echo -n "configuring $APPNAME Repository: "
 
 curl -s "https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh" | sudo bash &>> $LOGFILE
 stat
