@@ -35,7 +35,7 @@ echo -n "creating the $APPNAME user :"
 #other way of validation is echo $(id $PROJECTUSER) &>> $LOGFILE
 
 #instead lets double validate
-echo $(id $PROJECTUSER) && rabbitmqctl list_users &>> $LOGFILE | grep "roboshop"  &>> $LOGFILE
+echo $(id $PROJECTUSER) && rabbitmqctl list_users | grep "roboshop"  &>> $LOGFILE
 if [ $? -ne 0 ] ; then
 rabbitmqctl add_user roboshop roboshop123
 fi
