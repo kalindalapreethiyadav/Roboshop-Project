@@ -143,7 +143,7 @@ cd /home/roboshop/$COMPONENT
 pip3 install -r requirements.txt &>> $LOGFILE
 stat
 
-echo -e  "configuration update for the user and group id:"
+echo -n "configuration update for the user and group id:"
 userid=$(id -u roboshop)
 groupid=$(id -g roboshop)
 
