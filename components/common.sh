@@ -129,7 +129,7 @@ python_func()
 {
 
 echo -n "installing python :"
-yum install $(APPNAME)36 gcc $(APPNAME)3-devel -y &>> $LOGFILE
+yum install python36 gcc python3-devel -y &>> $LOGFILE
 
 Config_user
 
