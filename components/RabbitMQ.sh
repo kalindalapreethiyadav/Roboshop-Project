@@ -22,20 +22,21 @@ yum install $APPNAME -y &>> $LOGFILE
 stat
 
 echo -e "Enable & starting the $APPNAME :"
-systemctl enable $APPNAME
-systemctl start  $APPNAME
-systemctl status $APPNAME -l
+systemctl enable $APPNAME  &>> $LOGFILE
+systemctl start  $APPNAME  &>> $LOGFILE
+systemctl status $APPNAME -l  &>> $LOGFILE
 stat
 
 #abbitMQ comes with a default username / password as guest/guest. But this user cannot be used to connect. Hence we need to create one user for the application.
 echo -n "creating the $APPNAME user :"
+
+echo $id roboshop &>> $LOGFILE
+if [$? -nq 0 ] ; then
 rabbitmqctl add_user roboshop roboshop123
 rabbitmqctl set_user_tags roboshop administrator
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 stat
+fi
 
-echo "***************************************"
-
-Nodejs
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
