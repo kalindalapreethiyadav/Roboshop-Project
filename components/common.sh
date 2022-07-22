@@ -146,8 +146,7 @@ stat
 echo -e  "configuration update for the user and group id:"
 User_id=$(id -u)
 Group_id=$(id -g)
-sed -i -e "/uid/ c uid = $User_id" payment.ini &>> $LOGFILE
-sed -i -e "/uid/ c gid = $Group_id" payment.ini &>> $LOGFILE
+sed -i -e "/uid/ c uid = $User_id" -e "/uid/ c gid = $Group_id" $COMPONENT.ini &>> $LOGFILE
 stat
 
 #Update SystemD service file with CART , USER , RABBITMQ Server IP Address.
