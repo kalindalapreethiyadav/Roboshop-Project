@@ -33,5 +33,11 @@ shipping:
 RabbitMQ:
 	sh components/RabbitMQ.sh
 
+payment:
+	sh components/payment.sh
+
+Dispatch:
+	sh components/dispatch.sh
+
 
 
