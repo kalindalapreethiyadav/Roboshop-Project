@@ -46,12 +46,11 @@ fi
 stat
 
 echo -n "unistalling pulgins :"
-echo "show pulgins" | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
+echo show plugins | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
 if [ $? -eq 0 ] ; then
     echo -n "uninstalling pulgins and validating password :"
-    echo "SET PASSWORD FOR 'root@localhost' = PASSWORD('RoboShop@1');" > /tmp/root_password_change.sql
-    stat
-    mysql --connect-expired-password -uroot -p$Var1 < /tmp/root_password_change.sql &>> $LOGFILE
+    echo "uninstall plugin validate_password;" > /tmp/plugin_unistall_cmd_validation.sql
+    mysql --connect-expired-password -uroot -pRoboShop@1 < /tmp/plugin_unistall_cmd_validation.sql &>> $LOGFILE
     stat
 fi
 stat
