@@ -43,7 +43,7 @@ mv localhost.conf /etc/$APPNAME/default.d/$PROJECTNAME.conf
 stat
 
 echo -n "configuration changes :"
-    sed -i -e '/catalogue/s/localhost/catalogue.robotshop.internal/' -e '/user/s/localhost/user.robotshop.internal/' -e '/cart/s/localhost/cart.robotshop.internal/' -e '/shipping/s/localhost/shipping.robotshop.internal/' /etc/nginx/default.d/roboshop.conf
+    sed -i -e '/payment/s/localhost/payment.robotshop.internal/' -e '/catalogue/s/localhost/catalogue.robotshop.internal/' -e '/user/s/localhost/user.robotshop.internal/' -e '/cart/s/localhost/cart.robotshop.internal/' -e '/shipping/s/localhost/shipping.robotshop.internal/' /etc/nginx/default.d/roboshop.conf
 stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
