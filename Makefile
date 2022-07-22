@@ -36,7 +36,7 @@ RabbitMQ:
 payment:
 	sh components/payment.sh
 
-Dispatch:
+dispatch:
 	sh components/dispatch.sh
 
 
