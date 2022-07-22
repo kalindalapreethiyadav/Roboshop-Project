@@ -30,12 +30,14 @@ stat
 #abbitMQ comes with a default username / password as guest/guest. But this user cannot be used to connect. Hence we need to create one user for the application.
 echo -n "creating the $APPNAME user :"
 
-echo $id roboshop &>> $LOGFILE
+echo $(id $PROJECTUSER) &>> $LOGFILE
 if [$? -nq 0 ] ; then
 rabbitmqctl add_user roboshop roboshop123
-rabbitmqctl set_user_tags roboshop administrator
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 stat
+
+#rabbitmqctl set_user_tags roboshop administrator
+#rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+#stat
 fi
 
 
