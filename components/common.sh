@@ -151,8 +151,7 @@ stat
 
 #Update SystemD service file with CART , USER , RABBITMQ Server IP Address.
 echo -n "Configuring DB Domain NameSpace:" 
-sed -i -e 's/CARTHOST/cart.robotshop.internal/' -e 's/USERHOST/user.robotshop.internal/'
- -e 's/AMQPHOST/rabbitmq.robotshop.internal/' ./systemd.service
+sed -i -e 's/CARTHOST/cart.robotshop.internal/' -e 's/USERHOST/user.robotshop.internal/' -e 's/AMQPHOST/rabbitmq.robotshop.internal/' systemd.service
 mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat
 
