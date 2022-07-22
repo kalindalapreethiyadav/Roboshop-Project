@@ -178,13 +178,11 @@ Download_and_Extract
 
 echo -n "checking golang commands :"
 go mod init $COMPONENT &>> $LOGFILE
-go get 
-go build
+go get  &>> $LOGFILE
+go build &>> $LOGFILE
 stat
 
-echo -n "Enable and start $COMPONENT $APPNAME Service"
-systemctl enable $COMPONENT &>> $LOGFILE
-systemctl start $COMPONENT #&>> $LOGFILE
+Starting_Service
 stat
 
 }
