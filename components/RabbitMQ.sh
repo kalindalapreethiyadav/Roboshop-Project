@@ -11,15 +11,16 @@ REPOS_URL="https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erla
 source components/common.sh
 
 echo -n "installing $APPNAME dependency: "
-yum install $REPOS_URL -y
+yum install $REPOS_URL -y &>> $LOGFILE
 stat
 
 echo -n "installing $APPNAME Repository: "
-curl -s https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh | sudo bash
+
+curl -s "https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh" | sudo bash &>> $LOGFILE
 stat
 
 echo -n "installing $APPNAME : "
-yum install $APPNAME -y
+yum install $APPNAME -y &>> $LOGFILE
 stat
 
 echo -e "Enable & starting the $APPNAME :"
