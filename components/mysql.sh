@@ -48,8 +48,7 @@ stat
 echo -n "unistalling pulgins :"
 echo show plugins | mysql -uroot -pRoboShop@1 2>> $LOGFILE | grep "validate_password" &>> $LOGFILE
 if [ $? -eq 0 ] ; then
-    echo -n "uninstalling pulgins and validating password :"
-    echo "uninstall plugin validate_password;" > /tmp/plugin_unistall_cmd_validation.sql
+    echo -e "uninstall plugin validate_password;" > /tmp/plugin_unistall_cmd_validation.sql
     mysql --connect-expired-password -uroot -pRoboShop@1 < /tmp/plugin_unistall_cmd_validation.sql &>> $LOGFILE
     stat
 fi
@@ -65,7 +64,7 @@ stat
 
 echo "Injecting the Schema:"
 cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>> $LOGFILE
-
+stat
 
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
