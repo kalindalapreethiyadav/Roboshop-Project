@@ -156,12 +156,10 @@ sed -i -e 's/CARTHOST/cart.robotshop.internal/' -e 's/USERHOST/user.robotshop.in
 mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat
 
-Starting_Service
-
-#systemctl daemon-reload
-# systemctl enable payment 
-# systemctl start payment
-# systemctl status payment -l
+systemctl daemon-reload
+systemctl enable payment 
+systemctl start payment
+systemctl status payment -l
 stat
 
 }
