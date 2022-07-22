@@ -156,8 +156,7 @@ mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.serv
 stat
 
 Starting_Service
-
-#echo $id roboshop | awk 
+stat
 
 }
 
