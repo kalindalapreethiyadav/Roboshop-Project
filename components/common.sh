@@ -125,7 +125,7 @@ Installing_Maven()
 
 }
 
-python()
+python_func()
 {
 
 echo -n "installing python :"

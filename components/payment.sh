@@ -5,5 +5,9 @@ COMPONENT=payment
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=python
 PROJECTUSER=roboshop
+source components/common.sh
 
-python
+python_func
+stat
+
+echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
