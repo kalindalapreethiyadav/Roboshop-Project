@@ -176,7 +176,7 @@ Create_User
 #calling Download and extract function
 Download_and_Extract
 
-$ cd $COMPONENT 
+echo -n "checking golang commands :"
 $ go mod init $COMPONENT
 $ go get 
 $ go build
