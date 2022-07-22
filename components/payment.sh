@@ -10,6 +10,5 @@ groupid=$(id -g roboshop)
 source components/common.sh
 
 python_func
-stat
 
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
