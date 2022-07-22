@@ -37,7 +37,7 @@ payment:
 	sh components/payment.sh
 
 dispatch:
-	sh components/dispatch.sh
+	sh components/Dispatch.sh
 
 
 
