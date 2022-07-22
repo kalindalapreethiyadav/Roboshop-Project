@@ -146,7 +146,8 @@ stat
 echo -e  "configuration update for the user and group id:"
 User_id=$(id -u)
 Group_id=$(id -g)
-sed -i -e "/uid/ c uid = $User_id" -e "/gid/ c gid = $Group_id" $COMPONENT.ini &>> $LOGFILE
+sed -i -e "/uid/ c uid = $User_id" $COMPONENT.ini &>> $LOGFILE
+sed -i -e "/gid/ c gid = $Group_id" $COMPONENT.ini &>> $LOGFILE
 stat
 
 #Update SystemD service file with CART , USER , RABBITMQ Server IP Address.
@@ -156,6 +157,11 @@ mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.serv
 stat
 
 Starting_Service
+
+#systemctl daemon-reload
+# systemctl enable payment 
+# systemctl start payment
+# systemctl status payment -l
 stat
 
 }
