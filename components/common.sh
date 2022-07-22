@@ -144,10 +144,10 @@ pip3 install -r requirements.txt &>> $LOGFILE
 stat
 
 echo -e  "configuration update for the user and group id:"
-User_id=$(id -u)
-Group_id=$(id -g)
-sed -i -e "/uid/ c uid = $User_id" payment.ini
-sed -i -e "/gid/ c gid = $Group_id" payment.ini
+User_id=$id -u
+Group_id=$id -g
+sed -i -e "/uid/ c uid = $(User_id)" payment.ini
+sed -i -e "/gid/ c gid = $(Group_id)" payment.ini
 stat
 
 #Update SystemD service file with CART , USER , RABBITMQ Server IP Address.
