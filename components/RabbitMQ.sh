@@ -6,17 +6,16 @@ COMPONENT=rabbitmq-server
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=rabbitmq-server
 PROJECTUSER=roboshop
-REPOS_URL="https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm"
 #lets call all common function fucntions for validating and other common func for all componets
 source components/common.sh
 
 echo -n "installing $APPNAME dependency: "
-yum install "https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm" -y &>> $LOGFILE
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>> $LOGFILE
 stat
 
 echo -n "configuring $APPNAME Repository: "
 
-curl -s "https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh" | sudo bash &>> $LOGFILE
+curl -s https://packagecloud.io/install/repositories/rabbitmq/$APPNAME/script.rpm.sh | sudo bash &>> $LOGFILE
 stat
 
 echo -n "installing $APPNAME : "
