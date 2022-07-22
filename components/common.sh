@@ -162,3 +162,29 @@ stat
 
 }
 
+go_lang()
+{
+    
+echo "***************************************"
+echo -n "Installing $APPNAME"
+yum install $APPNAME -y &>> $LOGFILE
+stat
+
+#calling cretae user function 
+Create_User
+
+#calling Download and extract function
+Download_and_Extract
+
+$ cd $COMPONENT 
+$ go mod init $COMPONENT
+$ go get 
+$ go build
+stat
+
+echo -n "Enable and start $COMPONENT $APPNAME Service"
+systemctl enable $APPNAME &>> $LOGFILE
+systemctl start $APPNAME &>> $LOGFILE
+stat
+
+}
