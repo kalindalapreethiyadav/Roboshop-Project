@@ -174,7 +174,9 @@ stat
 Create_User
 
 #calling Download and extract function
-Download_and_Extract
+curl -L -s -o /tmp/dispatch.zip https://github.com/stans-robot-project/dispatch/archive/refs/heads/main.zip
+unzip /tmp/dispatch.zip 
+mv dispatch-main dispatch 
 
 echo -n "checking golang commands :"
 go mod init $COMPONENT &>> $LOGFILE
