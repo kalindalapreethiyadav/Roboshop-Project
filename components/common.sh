@@ -154,9 +154,8 @@ sed -i -e 's/CARTHOST/cart.robotshop.internal/' -e 's/USERHOST/user.robotshop.in
 mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat
 
-
-    Starting_Service
-
+Starting_Service
+stat
 
 }
 

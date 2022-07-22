@@ -5,8 +5,8 @@ COMPONENT=payment
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=python
 PROJECTUSER=roboshop
-userid=$(id -u)
-groupid=$(id -g)
+userid=$(id -u roboshop)
+groupid=$(id -g roboshop)
 source components/common.sh
 
 python_func
