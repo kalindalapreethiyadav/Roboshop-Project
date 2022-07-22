@@ -1,7 +1,7 @@
 #!/bin/bash/
 #if any line of cmd code have error then exit the script
 set -e 
-COMPONENT=catalogue
+COMPONENT=rabbitmq-server
 #All output need to be redirected to log file 
 LOGFILE="/tmp/$COMPONENT.log"
 APPNAME=rabbitmq-server
@@ -24,9 +24,9 @@ yum install $APPNAME -y &>> $LOGFILE
 stat
 
 echo -e "Enable & starting the $APPNAME :"
-systemctl enable rabbitmq-server 
-systemctl start rabbitmq-server
-systemctl status rabbitmq-server -l
+systemctl enable $COMPONENT
+systemctl start  $COMPONENT
+systemctl status $COMPONENT -l
 stat
 
 #abbitMQ comes with a default username / password as guest/guest. But this user cannot be used to connect. Hence we need to create one user for the application.
