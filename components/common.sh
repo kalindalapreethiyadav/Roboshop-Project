@@ -184,7 +184,9 @@ go get  &>> $LOGFILE
 go build &>> $LOGFILE
 stat
 
-Starting_Service
-stat
+mv /home/roboshop/dispatch/systemd.service /etc/systemd/system/dispatch.service
+systemctl daemon-reload
+systemctl enable dispatch 
+systemctl start dispatch
 
 }
