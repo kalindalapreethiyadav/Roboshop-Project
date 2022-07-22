@@ -67,4 +67,6 @@ stat
 echo "Injecting the Schema:"
 cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>> $LOGFILE
 
+
+
 echo -e "\e[36m ******Succesfully completed Configuration*************\e[0m"
