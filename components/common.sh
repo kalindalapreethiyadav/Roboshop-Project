@@ -177,14 +177,14 @@ Create_User
 Download_and_Extract
 
 echo -n "checking golang commands :"
-go mod init $COMPONENT
+go mod init $COMPONENT &>> $LOGFILE
 go get 
 go build
 stat
 
 echo -n "Enable and start $COMPONENT $APPNAME Service"
 systemctl enable $APPNAME &>> $LOGFILE
-systemctl start $APPNAME &>> $LOGFILE
+systemctl start $APPNAME #&>> $LOGFILE
 stat
 
 }
