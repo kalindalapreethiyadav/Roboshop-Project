@@ -130,8 +130,13 @@ python_func()
 
 echo -n "installing python :"
 yum install python36 gcc python3-devel -y &>> $LOGFILE
+stat
 
-Config_user
+#calling cretae user function 
+Create_User
+
+#calling Download and extract function
+Download_and_Extract
 
 echo -n "Installing requirments :"
 cd /home/roboshop/$COMPONENT 
