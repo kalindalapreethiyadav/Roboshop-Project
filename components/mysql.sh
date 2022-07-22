@@ -58,7 +58,8 @@ echo -n "Downloading the schema :"
 curl -s -L -o /tmp/mysql.zip $Schema_Url
 stat
 
-echo -n "Extracting the Schema :" :
+
+echo -n "Extracting the Schema :"
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat
 
