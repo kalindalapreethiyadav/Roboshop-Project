@@ -6,6 +6,6 @@
                             "Name": "COMPONENT.example.com",
                             "Type": "A",
                             "TTL": 300,
-                         "ResourceRecords": [{ "Value": "IP_ADDRESS"}]
+                         "ResourceRecords": [{ "Value": "IPADDRESS"}]
 }}]
 }
