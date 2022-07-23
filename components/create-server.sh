@@ -20,4 +20,4 @@ Private_ADDRESS=$(aws ec2 run-instances --security-group-ids $SGID --image-id $A
 
 sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IP_ADDRESS/${Private_ADDRESS}/" > /tmp/route.json
 
-aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K --change-batch file:///tmp/route.json
+aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K --change-batch file:///tmp/route.json | jq
