@@ -10,10 +10,8 @@ AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=CloudDevOps-LabImag
 #echo $AMI_ID
 
 # creating the instances unsing AWS CLI commands
-aws ec2 run-instances --security-group-ids $SGID --image-id $AMI_ID --instance-type t2.micro
---tag-specifications 'ResourceType=instance,Tags=[{Key=webserver,Value=${COMPONENT}}]' | jq
-
- #Private_ADDRESS=$(aws ec2 run-instances --security-group-ids $SGID --image-id $AMI_ID --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" |  jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+Private_ADDRESS=$(aws ec2 run-instances --security-group-ids $SGID --image-id $AMI_ID --instance-type t2.micro
+--tag-specifications 'ResourceType=instance,Tags=[{Key=webserver,Value=${COMPONENT}}]' | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
 
 #Create a ChangeResourceRecordSets request
@@ -21,6 +19,6 @@ aws ec2 run-instances --security-group-ids $SGID --image-id $AMI_ID --instance-t
 #DELETE deletes a record set with a specified value in the hosted zone
 #UPSERT either creates a new record set with a specified value, or updates a record set with a specified value if that record set already exists
 
-sed -e 's/COMPONENT/${COMPONENT}/' -e 's/IP_ADDRESS/${Private_ADDRESS}/' > /tmp/route.json
+sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IP_ADDRESS/${Private_ADDRESS}/" > /tmp/route.json
 
 aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K --change-batch file:///tmp/route.json
