@@ -178,15 +178,4 @@ curl -L -s -o /tmp/dispatch.zip https://github.com/stans-robot-project/dispatch/
 unzip /tmp/dispatch.zip 
 mv dispatch-main dispatch 
 
-echo -n "checking golang commands :"
-go mod init $COMPONENT &>> $LOGFILE
-go get  &>> $LOGFILE
-go build &>> $LOGFILE
-stat
-
-mv /home/roboshop/dispatch/systemd.service /etc/systemd/system/dispatch.service
-systemctl daemon-reload
-systemctl enable dispatch 
-systemctl start dispatch
-
-}
+echo -n "checking golang co
