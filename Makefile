@@ -39,7 +39,7 @@ payment:
 dispatch:
 	sh components/Dispatch.sh
 
-create-server:
+createserver:
 	sh components/create-server.sh
 
 
