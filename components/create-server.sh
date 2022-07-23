@@ -7,8 +7,8 @@ SGID="sg-09f0434c8144d66e5"
 #Script Aim is to create a vm instance and records creation and update to host zone 
 #lets find out the AMI id of the AMI 
 
-AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=CloudDevOps-LabImage-CentOS7" | jq ".Images[].ImageId" | sed -e 's/"//g')
-echo $AMI_ID
+AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=CloudDevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
+echo $AMI_ID 
 
 create_server() {
     echo "$COMPONENT Server Creation in progress"
