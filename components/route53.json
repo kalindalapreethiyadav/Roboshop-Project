@@ -8,3 +8,4 @@
                 "TTL": 10,
                 "ResourceRecords": [{ "Value": "IPADDRESS"}]
     }}]
+}
