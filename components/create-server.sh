@@ -1,8 +1,12 @@
 
-
-
 #!/bin/bash/
 #This script to create a server and assign records to the route53 host zone
+
+if [ "$1" = "" ] | [ "$2" = "" ] ; then 
+    echo -e "\e[31m \n Valid options are component -name or all and env \e[0m \n \e[33m Ex: \n\t bash create-server.sh payment dev \n \e[0m "
+    exit 1
+fi 
+
 COMPONENT=$1
 ENV=$2
 SGID="sg-09f0434c8144d66e5"
@@ -23,7 +27,7 @@ aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K -
 
 }
 
-if [ "$1" == "all" ] |  [ "$2" == "all" ]; then 
+if [ "$1" == "all" ] ; then 
     for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do 
         COMPONENT=$COMPONENT
         create_server 
@@ -31,6 +35,3 @@ if [ "$1" == "all" ] |  [ "$2" == "all" ]; then
 else 
     create_server 
 fi
-
-
-
