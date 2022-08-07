@@ -11,15 +11,6 @@ SGID="sg-09f0434c8144d66e5"
 AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=CloudDevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
 echo $AMI_ID 
 
-if [ "$1" == "all" ] |  [ "$2" == "all" ]; then 
-    for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do 
-        COMPONENT=$COMPONENT
-        create_server 
-    done 
-else 
-    create_server 
-fi
-
 create_server() 
 {
 echo -e "$COMPONENT Server Creation in progress"
@@ -30,4 +21,15 @@ sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json 
 aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K --change-batch file://record.json | jq 
 
 }
+
+if [ "$1" == "all" ] |  [ "$2" == "all" ]; then 
+    for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do 
+        COMPONENT=$COMPONENT
+        create_server 
+    done 
+else 
+    create_server 
+fi
+
+
 
