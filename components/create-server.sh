@@ -9,11 +9,11 @@ fi
 
 COMPONENT=$1
 ENV=$2
-SGID="sg-09f0434c8144d66e5"
+SGID="sg-052b6aa44446ef0b4"
 #Script Aim is to create a vm instance and records creation and update to host zone 
 #lets find out the AMI id of the AMI 
 
-AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=CloudDevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
+AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
 echo $AMI_ID 
 
 create_server() 
@@ -23,7 +23,7 @@ PRIVATE_IP=$(aws ec2 run-instances --security-group-ids $SGID --image-id $AMI_ID
 
 # Changing the IP Address and DNS Name as per the component
 sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" route53.json > record.json
-aws route53 change-resource-record-sets --hosted-zone-id Z037286228DFYMBZCZ58K --change-batch file://record.json | jq 
+aws route53 change-resource-record-sets --hosted-zone-id Z10449332B7O19X92W88T --change-batch file://record.json | jq 
 
 }
 
